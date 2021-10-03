@@ -6,11 +6,46 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
     <changeSet id="1" author="Michael">
-        <addColumn tableName="profile" schemaName="local_ct">
-            <column name="age"
-                    type="int">
+
+        <createTable tableName="profile" schemaName="local_ct">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true"></constraints>
             </column>
-        </addColumn>
+            <column name="first_name" type="varchar(255)"></column>
+            <column name="last_name" type="varchar(255)"></column>
+            <column name="email" type="varchar(255)"></column>
+            <column name="age" type="int"></column>
+        </createTable>
+
+
+        <createTable tableName="place">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true"></constraints>
+            </column>
+            <column name="name" type="varchar(255)"></column>
+            <column name="active" type="bit"></column>
+            <column name="address" type="varchar(255)"></column>
+            <column name="code" type="varchar(255)"></column>
+            <column name="image_url" type="varchar(255)"></column>
+
+        </createTable>
+
+        <createTable tableName="travels">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true"></constraints>
+            </column>
+            <column name="profile_id" type="bigint"></column>
+            <column name="place_id" type="bigint"></column>
+            <column name="checked_in" type="datetime(6)"></column>
+            <column name="checked_out" type="datetime(6)"></column>
+
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="travels" baseColumnNames="profile_id" constraintName="fk_travels_profiles" referencedTableName="profile"
+                                 referencedColumnNames="id"></addForeignKeyConstraint>
+
+        <addForeignKeyConstraint baseTableName="travels" baseColumnNames="place_id" constraintName="fk_travels_place" referencedTableName="place"
+                                 referencedColumnNames="id"></addForeignKeyConstraint>
     </changeSet>
 
 </databaseChangeLog>
