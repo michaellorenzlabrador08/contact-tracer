@@ -6,10 +6,7 @@ import com.innovage.contacttracer.exception.CTRuntimeException;
 import com.innovage.contacttracer.service.ResponseService;
 import com.innovage.contacttracer.service.UserRegistrationService;
 import com.innovage.contacttracer.utils.ResponseModel;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -34,5 +31,10 @@ public class UserRegistrationResource {
         } catch (CTRuntimeException cte) {
             return responseService.failResponse(cte.getMessage());
         }
+    }
+
+    @GetMapping("/hello")
+    private String hello() {
+        return "hello";
     }
 }
