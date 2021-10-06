@@ -130,4 +130,25 @@
         </plugins>
     </build>
 
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+
+            <properties>
+                <profile.tls>dev</profile.tls>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>prod</id>
+
+            <properties>
+                <profile.tls>,prod</profile.tls>
+            </properties>
+        </profile>
+    </profiles>
+
 </project>

@@ -11,4 +11,8 @@ public class Constants {
     public static final String PLACE_CODE_NOT_FOUND = "Place code not found";
     public static final String CHECKIN_NOT_FOUND = "Check in record of the place not found";
 
+    public static final String SPRING_PROFILE_DEVELOPMENT = "dev";
+    public static final String SPRING_PROFILE_TEST = "test";
+    public static final String SPRING_PROFILE_PRODUCTION = "prod";
+
 }
